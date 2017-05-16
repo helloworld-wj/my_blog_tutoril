@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'sblog',
+    'sblog.templatetags.custom_markdown',
 ]
 
 MIDDLEWARE = [

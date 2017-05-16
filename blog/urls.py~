@@ -17,10 +17,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from sblog import views as sblog_views
+from sblog.views import RSSFeed
 urlpatterns = [
-    url(r'^$', sblog_views.home),
-    # ?P<my_args>用于标识匹配的内容
-    url(r'^(?P<my_args>\d+)/$',  sblog_views.detail, name ='detail') ,
+    url(r'^$', sblog_views.home, name ='home'),
+    # ?P<id>用于标识匹配的内容
+    url(r'^(?P<id>\d+)/$',  sblog_views.detail, name ='detail') ,
+    url(r'^archives/$', sblog_views.archives, name ='archives'),
+    url(r'^tag(?P<tag>\w+)/$', sblog_views.search_tag, name ='search_tag'),
+    url(r'^aboutme$', sblog_views.about_me, name ="about_me"),
+    url(r'^search/$', sblog_views.blog_search, name = 'search'),
     url(r'^test/$', sblog_views.test, name = 'test'),
     url(r'^admin/', admin.site.urls),
 ]
